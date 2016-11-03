@@ -3,18 +3,15 @@
 -- VARIABLE: { 
 --      name: "fechai", 
 --      display: "Fecha Inicial",
---      type: "daterange", 
+--      type: "date", 
 -- }
 -- VARIABLE: { 
 --      name: "fechaf", 
 --      display: "Fecha Final",
---      type: "daterange", 
+--      type: "date", 
 -- }
 
 
 
-
-
-SELECT * FROM enviados WHERE fecha BETWEEN "{{fechai.start}}" and "{{fechaf.end}}"
-
+SELECT  * FROM enviados2 WHERE fecha BETWEEN "{{fechai}}" and "{{fechaf}}" 
 
