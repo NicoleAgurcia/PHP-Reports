@@ -1,5 +1,5 @@
 -- Mensajes list
--- This lists all timezone abbreviations in a given timezone
+-- This lists all sent messages 
 -- VARIABLE: { 
 --      name: "fechai", 
 --      display: "Fecha Inicial",
