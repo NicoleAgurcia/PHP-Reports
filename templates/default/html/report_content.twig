@@ -17,8 +17,10 @@
 	{% for dataset in DataSets %} 
 	    {% if not dataset.vertical %}
 		$('#result_table_{{loop.index}}').DataTable({
-    		"sScrollY": "400px",
-    		"bPaginate": true	
+    		sScrollY: "400px",
+    		bPaginate: true,
+			aaSorting: [],
+			
 		});
 
 
@@ -70,9 +72,9 @@
 </script>
 {% endif %}
 
-<!-- <div class="row">
+<div class="row">
     <div class="col-md-12">Query took {{Time}} seconds</div>
-</div> -->
+</div>
 <!-- 
 {% block show_query %}
 	{% if Query_Formatted %}
