@@ -13,5 +13,5 @@
 
 
 
-SELECT  * FROM enviados2 WHERE fecha BETWEEN "{{fechai}}" and "{{fechaf}}" LIMIT 10000
+SELECT  id, numero, contenido, fecha FROM enviados WHERE fecha BETWEEN "{{fechai}}" and "{{fechaf}}" LIMIT 10000
 

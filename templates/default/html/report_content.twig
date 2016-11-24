@@ -16,13 +16,13 @@
 	$(function() {
 	{% for dataset in DataSets %} 
 	    {% if not dataset.vertical %}
-		$('#result_table_{{loop.index}}').DataTable({
+		/*$('#result_table_{{loop.index}}').DataTable({
     		sScrollY: "400px",
     		bPaginate: true,
 			aaSorting: [],
 			
 		});
-
+*/
 
 		$('#result_table_{{loop.index}}').stickyTableHeaders({
 			fixedOffset: $('.navbar-fixed-top')

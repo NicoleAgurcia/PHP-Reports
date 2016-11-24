@@ -7,9 +7,9 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel='stylesheet' href='{{base}}/public/css/report.css' />
-    {% if not nodata %}
+   <!--  {% if not nodata %}
         <link rel='stylesheet' href='{{base}}/public/css/jquery.dataTables.css' />
-    {% endif %}
+    {% endif %} -->
     <link rel="stylesheet" type="text/css" href="{{base}}/public/css/daterangepicker-bs3.css" />
     <link rel="stylesheet" media="screen" type="text/css" href="{{base}}/public/css/datepicker.css" />
     <link rel="stylesheet" type="text/css" href="{{base}}/public/css/bootstrap-multiselect.css" />
@@ -38,9 +38,9 @@
         <script type="text/javascript" src="{{base}}/public/js/jquery.browser.js"></script>
         <script type="text/javascript" src="{{base}}/public/js/jquery.iframe-auto-height.plugin.1.9.3.js"></script>
     {% endif %}
-    {% if not nodata %}
+   <!--  {% if not nodata %}
         <script type='text/javascript' src='{{base}}/public/js/jquery.dataTables.min.js'></script>
-    {% endif %}
+    {% endif %} -->
     <script type="text/javascript" src="{{base}}/public/js/moment-with-langs-2.5.1.min.js"></script>
     <script type="text/javascript" src="{{base}}/public/js/daterangepicker-1.3.2.js"></script>
     <script type="text/javascript" src="{{base}}/public/js/bootstrap-datepicker.js"></script>
@@ -195,7 +195,7 @@
         {% endif %}
     </div>
 
-    {% block time_estimate %}
+ <!--    {% block time_estimate %}
         {% if time_estimate %}
             <div style='margin-top: 20px;'>
                 <a data-role="button" data-toggle="collapse" data-target="#time_estimate_holder" href="#time_estimate_holder">show time estimate data</a>
@@ -209,5 +209,5 @@
                 </div>
             </div>
         {% endif %}
-    {% endblock %}
+    {% endblock %} -->
 {% endblock %}
