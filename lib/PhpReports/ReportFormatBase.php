@@ -8,7 +8,9 @@ abstract class ReportFormatBase {
 		$macros = array();
 		if(isset($_GET['macros'])) $macros = $_GET['macros'];
 
-		$report = new Report($report,$macros,$environment);
+		$index = $_GET['index'];
+
+		$report = new Report($report,$macros,$environment,$index);
 
 		return $report;
 	}

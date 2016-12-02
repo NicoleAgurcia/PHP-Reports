@@ -23,7 +23,6 @@
 			
 		});
 */
-
 		$('#result_table_{{loop.index}}').stickyTableHeaders({
 			fixedOffset: $('.navbar-fixed-top')
 		});
@@ -31,6 +30,7 @@
 		
 		{% if dataset.selectable %}
 		$('#result_table_{{loop.index}}').on('change','input.selectable',function() {
+
 			//determine selected inputs
 			var selected_inputs = $("input.selectable:checked",$(this).closest('table'));
 			

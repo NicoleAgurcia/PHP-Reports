@@ -26,6 +26,7 @@
 		{% endblock %}
 	{% endif %}
 	{% if not Formatting[loop.index-1].nodata %}
+
 	<table{% if not inline_email %} id='result_table_{{loop.index}}' class='result_table table table-bordered table-striped'{% else %} border="1" cellspacing="0"{% endif %}>
 		{% if dataset.vertical %}
 		<thead>

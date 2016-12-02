@@ -17,9 +17,9 @@ class Report {
 	protected $filemtime;
 	protected $has_run = false;
 	
-	public function __construct($report,$macros = array(), $environment = null, $use_cache = null) {			
+	public function __construct($report,$macros = array(), $environment = null,  $use_cache = null) {			
 		$this->report = $report;
-		
+
 		if(!file_exists(self::getFileLocation($report))) {
 			throw new Exception('Report not found - '.$report);
 		}
@@ -27,6 +27,7 @@ class Report {
 		$this->filemtime = filemtime(self::getFileLocation($report));
 		
 		$this->use_cache = $use_cache;
+
 		
 		//get the raw report file
 		$this->raw = self::getReportFileContents($report);
@@ -51,8 +52,15 @@ class Report {
 		$this->initDb();
 		
 		$this->getTimeEstimate();
+
 	}
 	
+	public function getPag(){
+		if(isset($_GET['index']) && !empty($_GET['index']))
+			$pagina = $_GET['index'];
+			echo "Obteniendo paginacion";
+	}
+
 	public static function getFileLocation($report) {
 		//make sure the report path doesn't go up a level for security reasons
 		if(strpos($report,"..")!==false) {
@@ -93,6 +101,10 @@ class Report {
 		
 		return array();
 	}
+
+
+
+
 	public function getEnvironment() {
 		return PhpReports::$config['environments'][$this->options['Environment']];
 	}

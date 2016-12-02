@@ -56,6 +56,10 @@ if(isset(PhpReports::$config['ga_api'])) {
   });
 }
 
+
+
+
+
 Flight::route('/',function() {
 	PhpReports::listReports();
 });
@@ -77,8 +81,10 @@ Flight::route('/report-list-json',function() {
 });
 
 //if no report format is specified, default to html
+//RETURN DATA
 Flight::route('/report',function() {
 	PhpReports::displayReport($_REQUEST['report'],'html');
+  echo $_GET['index'];
 });
 
 //reports in a specific format (e.g. 'html','csv','json','xml', etc.)

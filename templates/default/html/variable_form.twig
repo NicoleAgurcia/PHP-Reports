@@ -1,5 +1,8 @@
 <form class="form-horizontal well well-sm" role="form" method="get" id="variable_form">
+
+
 	<input type='hidden' name='report' value='{{report}}' />
+
 
     <div class="row">
         <div class="col-sm-12" id="variables-header">
@@ -12,62 +15,65 @@
         <fieldset id="variables-fieldset" class="collapse {% if not collapse_configuration %}in{% endif %}">
             {% for var in vars %}
                 {% block variable_form_row %}
-                    <div class='form-group variable'>
-                        {% block variable_form_row_label %}
-                        <label for='var_{{var.key}}' class='col-sm-2 control-label'>{{var.display}}</label>
-                        {% endblock %}
-                        <div class='col-sm-10 controls'>
-                            {% block variable_form_row_modifier_input %}
-                                {% if var.modifier_options %}
-                                    <select name='macros[{{var.key}}_modifier]' id='var_{{var.key}}_modifier' class='input'>
-                                    {% for option in var.modifier_options %}
-                                        <option value="{{option.value}}" {% if option.selected %}selected="selected"{% endif %}>{{option.display}}</option>
-                                    {% endfor %}
-                                    </select>
-                                {% endif %}
+                    
+                        <div class='form-group variable' style="display: {{var.display == 'page' ? "none" : ""}}">
+                            {% block variable_form_row_label %}
+                            <!-- despliega el nombrel objeto -->
+                            <label for='var_{{var.key}}' class='col-sm-2 control-label'>{{var.display}}</label>
                             {% endblock %}
-                            {% block variable_form_row_input %}
-                                {% if var.is_select %}
-                                    <select
-                                        name='macros[{{var.key}}]{% if var.is_multiselect %}[]{% endif %}'
-                                        id='var_{{var.key}}'
-                                        {% if var.is_multiselect %}multiple=true size={{var.choices}}{% endif %}
-                                    >
-                                    {% for option in var.options %}
-                                        <option value="{{option.value}}" {% if option.selected %}selected="selected"{% endif %}>{{option.display}}</option>
-                                    {% endfor %}
-                                    </select>
-                                {% elseif var.is_textarea %}
-                                    <textarea name='macros[{{var.key}}]' id='var_{{var.key}}' style='vertical-align:top; width: 500px; height: 80px;'>{{var.value|join("\n")}}</textarea>
-                                {% elseif var.type == "daterange" %}
-                                    <input type='hidden' name='macros[{{var.key}}][start]' id='var_{{var.key}}_start' value='{{var.value.start|date('Y-m-d H:i:s')}}' />
-                                    <input type='hidden' name='macros[{{var.key}}][end]' id='var_{{var.key}}_end' value='{{var.value.end|date('Y-m-d H:i:s')}}' />
-                                    <div class="daterangepicker_holder btn btn-default pull-left" data-var="{{var.key}}">
-                                            <i class="glyphicon glyphicon-calendar"></i>
-                                            <span>
-                                                {% if var.value.start and var.value.end %}
-                                                    {{ var.value.start|date('F j, Y') }} - {{ var.value.end|date('F j, Y') }}
-                                                {% else %}
-                                                    <em>no date range selected</em>
-                                                {% endif %}
-                                            </span> <b class="caret"></b>
-                                    </div>
-                                {% elseif var.type == "date" %}
-                                    <div class="input-append date datepicker_holder" data-date="{{var.value|date('Y-m-d')}}" data-date-format="yyyy-mm-dd">
-                                        <input type='text' name='macros[{{var.key}}]' id="var_{{ var.key }}" value='{{var.value|date('Y-m-d H:i:s')}}' />
-                                        <i class="add-on glyphicon glyphicon-calendar"></i>
-                                    </div>
-                                {% else %}
-                                    <input type='text' name='macros[{{var.key}}]' id="var_{{ var.key }}" value='{{var.value}}' />
-                                {% endif %}
-                            {% endblock %}
-                            {% block variable_form_row_description %}
-                                {% if var.description %}
-                                    <span class='help-inline'>{{ var.description|raw }}</span>
-                                {% endif %}
-                            {% endblock %}
+                            <div class='col-sm-10 controls'>
+                              <!--   {% block variable_form_row_modifier_input %}
+                                    {% if var.modifier_options %}
+                                        <select name='macros[{{var.key}}_modifier]' id='var_{{var.key}}_modifier' class='input'>
+                                        {% for option in var.modifier_options %}
+                                            <option value="{{option.value}}" {% if option.selected %}selected="selected"{% endif %}>{{option.display}}</option>
+                                        {% endfor %}
+                                        </select>
+                                    {% endif %}
+                                {% endblock %} -->
+                                {% block variable_form_row_input %}
+                                    {% if var.is_select %}
+                                       <!--  <select
+                                            name='macros[{{var.key}}]{% if var.is_multiselect %}[]{% endif %}'
+                                            id='var_{{var.key}}'
+                                            {% if var.is_multiselect %}multiple=true size={{var.choices}}{% endif %}
+                                        >
+                                        {% for option in var.options %}
+                                            <option value="{{option.value}}" {% if option.selected %}selected="selected"{% endif %}>{{option.display}}</option>
+                                        {% endfor %}
+                                        </select> -->
+                                    {% elseif var.is_textarea %}
+                                        <!-- <textarea name='macros[{{var.key}}]' id='var_{{var.key}}' style='vertical-align:top; width: 500px; height: 80px;'>{{var.value|join("\n")}}</textarea> -->
+                                  <!--   {% elseif var.type == "daterange" %}
+                                        <input type='hidden' name='macros[{{var.key}}][start]' id='var_{{var.key}}_start' value='{{var.value.start|date('Y-m-d H:i:s')}}' />
+                                        <input type='hidden' name='macros[{{var.key}}][end]' id='var_{{var.key}}_end' value='{{var.value.end|date('Y-m-d H:i:s')}}' />
+                                        <div class="daterangepicker_holder btn btn-default pull-left" data-var="{{var.key}}">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                <span>
+                                                    {% if var.value.start and var.value.end %}
+                                                        {{ var.value.start|date('F j, Y') }} - {{ var.value.end|date('F j, Y') }}
+                                                    {% else %}
+                                                        <em>no date range selected</em>
+                                                    {% endif %}
+                                                </span> <b class="caret"></b>
+                                        </div> -->
+                                    {% elseif var.type == "date" %}
+                                        <div class="input-append date datepicker_holder" data-date="{{var.value|date('Y-m-d')}}" data-date-format="yyyy-mm-dd">
+                                            <input type='text' name='macros[{{var.key}}]' id="var_{{ var.key }}" value='{{var.value|date('Y-m-d H:i:s')}}' />
+                                            <i class="add-on glyphicon glyphicon-calendar"></i>
+                                        </div>
+                                    {% else %}
+                                        <input type='text' name='macros[{{var.key}}]' id="var_{{ var.key }}" value='{{var.value}}' />
+                                    {% endif %}
+                                {% endblock %}
+                                {% block variable_form_row_description %}
+                                    {% if var.description %}
+                                        <span class='help-inline'>{{ var.description|raw }}</span>
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
                         </div>
-                    </div>
+                    
                 {% endblock %}
             {% endfor %}
             <div class="form-group">
@@ -77,6 +83,12 @@
             </div>
         </fieldset>
     </div>
+
+
+
+
+    <!-- <input type='hidden' name='index' value=0 /> -->
+
 </form>
 <script>
 $(function() {
@@ -172,3 +184,20 @@ $(function() {
 		
 });
 </script>
+
+
+
+
+<form  role="form" method="get" id="variable_form">
+    <div class="form-group">
+        <ul class="pagination">
+            <li><a href="index=1">1</a></li>
+            <li><a href="index=2">2</a></li>
+            <li><a href="index=3">3</a></li>
+            <li><a href="index=4">4</a></li>
+            <li><a href="index=5">5</a></li>
+        </ul>      
+     </div>
+</form>
+
+
